@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student CRUD</title>
+</head>
+<body>
+    <h1>Student Database</h1>
+
+    <h2>Add Student</h2>
+    <form action="/add" method="post">
+        <input type="text" name="student" required>
+        <button type="submit">Add</button>        
+    </form>
+
+    <h2>Update Student</h2>
+    <form action="/update" method="post">
+        <input type="text" name="old_student" placeholder="Old Name" required>
+        <input type="text" name="new_student" placeholder="New Name" required>
+        <button type="submit">Update</button>
+    </form>
+
+    <h2>Delete Student</h2>
+    <form action="/delete" method="post">
+        <input type="text" name="student" required>
+        <button type="submit">Delete</button>
+    </form>
+
+    <h2>All Students</h2>
+    {% if students %}
+        <ul>
+        {% for student in students %}
+            <li>{{ student.name }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No students found.</p>
+    {% endif %}
+
+
+
+
+
+    <h1>Students</h1>
+    <ul>
+        {% for student in students %}
+        <li>
+            <ul>
+                {% for attribute, value in student.items() %}
+                <li> {{ attribute }} : {{ value }} </li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+
+
+</body>
+</html>
